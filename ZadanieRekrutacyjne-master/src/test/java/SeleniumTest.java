@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class SeleniumTest {
 
     @Test
-    public void searchAndEnter5thResult() {
+    public void searchAndOpen5thResult() {
         //Set Driver path and open google
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -33,10 +33,7 @@ public class SeleniumTest {
 
         //Click
         fifthResult.click();
-
-
-
-
+        
 
     }
 }
