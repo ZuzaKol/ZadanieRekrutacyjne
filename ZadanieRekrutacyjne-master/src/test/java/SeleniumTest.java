@@ -32,8 +32,7 @@ public class SeleniumTest {
         //Validation 1
         String resultsXPath = "(//h3[not(ancestor::div[@jsname])])";
         List<WebElement> results = driver.findElements(By.xpath(resultsXPath));
-        Assert.assertEquals(results.get(4).getText(), fifthResult.getText(), "validation 1 fail");
-
+        Assert.assertEquals(results.get(4).getText(), fifthResult.getText(), "Validation 1 fail");
 
 
         //Scroll to element
@@ -53,10 +52,10 @@ public class SeleniumTest {
 
         //Validation 2
         String actualURL = driver.getCurrentUrl();
-        Assert.assertFalse(actualURL.contains("google"), "Actual URL does contain the word 'google'");
+        Assert.assertFalse(actualURL.contains("google"), "Validation 2 fail.'");
 
-
-
+        //Driver quit
+        driver.quit();
 
 
 
