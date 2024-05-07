@@ -17,7 +17,6 @@ public class SeleniumTest {
         driver.get("https://www.google.com");
 
         //Accept cookies
-//        driver.findElement(By.cssSelector("button[id='L2AGLb'] div[role='none']")).click();
         driver.findElement(By.xpath("//div[text()='Zaakceptuj wszystko']")).click();
 
         //Enter query
