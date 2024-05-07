@@ -9,6 +9,8 @@ import java.util.List;
 
 public class SeleniumTest {
 
+//Never ever put a raw code into the test. 
+    
     @Test
     public void searchAndOpen5thResult() {
         //Set Driver path and open google
@@ -24,14 +26,18 @@ public class SeleniumTest {
         p.sendKeys("Selenium Java");
         p.sendKeys(Keys.RETURN);
 
+        
+
         //Find 5th result
         String fifthResultXpath = "(//h3[not(ancestor::div[@jsname])])[5]";
+        //weird xpath maybe you should learn more about XPATHs 
         WebElement fifthResult = driver.findElement(By.xpath(fifthResultXpath));
 
         //Validation 1
         String resultsXPath = "(//h3[not(ancestor::div[@jsname])])";
         List<WebElement> results = driver.findElements(By.xpath(resultsXPath));
         Assert.assertEquals(results.get(4).getText(), fifthResult.getText(), "Validation 1 fail");
+        //we shouldnt use assertEquals - there should be black or white not gray
 
         //Scroll to element
         Actions actions = new Actions(driver);
@@ -47,10 +53,12 @@ public class SeleniumTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        // Exception should be assigned to method signature
+        
         //Validation 2
         String actualURL = driver.getCurrentUrl();
         Assert.assertFalse(actualURL.contains("google"), "Validation 2 fail.'");
+        //why you are checking if URL is not google ?
 
         //Driver quit
         driver.quit();
