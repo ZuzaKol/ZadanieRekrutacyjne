@@ -17,7 +17,8 @@ public class SeleniumTest {
         driver.get("https://www.google.com");
 
         //Accept cookies
-        driver.findElement(By.cssSelector("button[id='L2AGLb'] div[role='none']")).click();
+//        driver.findElement(By.cssSelector("button[id='L2AGLb'] div[role='none']")).click();
+        driver.findElement(By.xpath("//div[text()='Zaakceptuj wszystko']")).click();
 
         //Enter query
         WebElement p=driver.findElement(By.name("q"));
@@ -28,12 +29,10 @@ public class SeleniumTest {
         String fifthResultXpath = "(//h3[not(ancestor::div[@jsname])])[5]";
         WebElement fifthResult = driver.findElement(By.xpath(fifthResultXpath));
 
-
         //Validation 1
         String resultsXPath = "(//h3[not(ancestor::div[@jsname])])";
         List<WebElement> results = driver.findElements(By.xpath(resultsXPath));
         Assert.assertEquals(results.get(4).getText(), fifthResult.getText(), "Validation 1 fail");
-
 
         //Scroll to element
         Actions actions = new Actions(driver);
@@ -56,10 +55,6 @@ public class SeleniumTest {
 
         //Driver quit
         driver.quit();
-
-
-
-
     }
 }
 
