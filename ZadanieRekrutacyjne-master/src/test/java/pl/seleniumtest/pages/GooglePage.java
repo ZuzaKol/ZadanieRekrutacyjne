@@ -36,7 +36,8 @@ public class GooglePage {
 
     public void findResult(Integer index) {
         //Find 5th result
-        String resultXpath = String.format("(//h3[not(ancestor::div[@jsname])])[%d]", index);
+        //All not-sponsored results can be clicked via selecting h3s. Some h3s are hidden under "More question" section, after clicking query dropdowns. Current xpath is focusing on non-sponsored and non-hidden results, therefore I had to exclude h3s which belongs to divs with attribute jsname.
+        String resultXpath = String.format("((//h3[not(ancestor::div[@jsname])]))[%d]", index);
         result = driver.findElement(By.xpath(resultXpath));
         //Get title
         resultTitle = result.getText();
@@ -59,17 +60,6 @@ public class GooglePage {
         String actualTitle = driver.getTitle();
         Assert.assertTrue(actualTitle.contains(resultTitle), "Validation fail");
     }
-
-//    public void validation1() {
-//        //Validate presence of desired result
-//        Assert.assertTrue(result.isDisplayed(), "The desired result is not displayed");
-//
-//
-//        String resultsXPath = "(//h3[not(ancestor::div[@jsname])])";
-//        List<WebElement> results = driver.findElements(By.xpath(resultsXPath));
-//        Assert.assertEquals(results.get(4).getText(), fifthResult.getText(), "Validation 1 fail");
-//    }
 }
-
 
 

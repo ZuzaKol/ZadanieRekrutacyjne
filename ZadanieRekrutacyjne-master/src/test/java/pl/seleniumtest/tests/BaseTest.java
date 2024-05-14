@@ -23,8 +23,8 @@ public class BaseTest {
         driver.findElement(By.xpath("//div[text()='Zaakceptuj wszystko']")).click();
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 }
